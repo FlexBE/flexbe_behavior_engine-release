@@ -1,0 +1,12 @@
+Source: ros-indigo-flexbe-core
+Section: misc
+Priority: extra
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://ros.org/wiki/flexbe_core
+Standards-Version: 3.9.2
+
+Package: ros-indigo-flexbe-core
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-flexbe-msgs, ros-indigo-rospy, ros-indigo-smach-ros
+Description: flexbe_core provides the core smach extension for the FlexBE behavior engine.
