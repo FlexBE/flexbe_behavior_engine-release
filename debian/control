@@ -1,0 +1,12 @@
+Source: ros-indigo-flexbe-widget
+Section: misc
+Priority: extra
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://ros.org/wiki/flexbe_widget
+Standards-Version: 3.9.2
+
+Package: ros-indigo-flexbe-widget
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-flexbe-core, ros-indigo-flexbe-msgs, ros-indigo-rospy, ros-indigo-smach-ros
+Description: flexbe_widget implements some smaller scripts for the behavior engine.
