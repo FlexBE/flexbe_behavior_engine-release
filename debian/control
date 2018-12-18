@@ -1,0 +1,12 @@
+Source: ros-lunar-flexbe-msgs
+Section: misc
+Priority: extra
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-actionlib, ros-lunar-actionlib-msgs, ros-lunar-catkin, ros-lunar-message-generation
+Homepage: http://ros.org/wiki/flexbe_msgs
+Standards-Version: 3.9.2
+
+Package: ros-lunar-flexbe-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-actionlib, ros-lunar-actionlib-msgs, ros-lunar-message-runtime, ros-lunar-rospy, ros-lunar-smach-ros
+Description: flexbe_msgs provides the messages used by FlexBE.
