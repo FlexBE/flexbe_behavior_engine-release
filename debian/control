@@ -1,0 +1,12 @@
+Source: ros-indigo-flexbe-behavior-engine
+Section: misc
+Priority: extra
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://ros.org/wiki/flexbe
+Standards-Version: 3.9.2
+
+Package: ros-indigo-flexbe-behavior-engine
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-flexbe-core, ros-indigo-flexbe-input, ros-indigo-flexbe-mirror, ros-indigo-flexbe-msgs, ros-indigo-flexbe-onboard, ros-indigo-flexbe-states, ros-indigo-flexbe-testing, ros-indigo-flexbe-widget
+Description: A meta-package to aggregate all the FlexBE packages
