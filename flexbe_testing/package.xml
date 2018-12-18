@@ -1,6 +1,6 @@
 <package>
   <name>flexbe_testing</name>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <description>
      flexbe_testing provides a framework for unit testing states.
   </description>
@@ -20,5 +20,6 @@
   <run_depend>flexbe_msgs</run_depend>
 
   <test_depend>rosunit</test_depend>
+  <test_depend>std_msgs</test_depend>
 
 </package>
