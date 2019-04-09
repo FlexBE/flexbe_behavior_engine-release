@@ -1,3 +1,35 @@
+## flexbe (kinetic) - 1.1.2-0
+
+The packages in the `flexbe` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic flexbe` on `Tue, 09 Apr 2019 14:57:35 -0000`
+
+These packages were released:
+- `flexbe_behavior_engine`
+- `flexbe_core`
+- `flexbe_input`
+- `flexbe_mirror`
+- `flexbe_msgs`
+- `flexbe_onboard`
+- `flexbe_states`
+- `flexbe_testing`
+- `flexbe_widget`
+
+Version of package(s) in repository `flexbe`:
+
+- upstream repository: https://github.com/team-vigir/flexbe_behavior_engine.git
+- release repository: https://github.com/FlexBE/flexbe_behavior_engine-release.git
+- rosdistro version: `1.1.1-0`
+- old version: `1.1.1-0`
+- new version: `1.1.2-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.2`
+- catkin_pkg version: `0.4.11`
+- rosdep version: `0.15.1`
+- rosdistro version: `0.7.3`
+- vcstools version: `0.1.40`
+
+
 ## flexbe (indigo) - 1.1.2-0
 
 The packages in the `flexbe` repository were released into the `indigo` distro by running `/usr/bin/bloom-release --rosdistro indigo --track indigo flexbe` on `Tue, 09 Apr 2019 14:52:52 -0000`
