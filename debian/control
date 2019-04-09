@@ -1,0 +1,12 @@
+Source: ros-lunar-flexbe-testing
+Section: misc
+Priority: extra
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-lunar-catkin, ros-lunar-rostest, ros-lunar-rosunit, ros-lunar-std-msgs
+Homepage: http://ros.org/wiki/flexbe_testing
+Standards-Version: 3.9.2
+
+Package: ros-lunar-flexbe-testing
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lunar-flexbe-core, ros-lunar-flexbe-msgs, ros-lunar-rospy, ros-lunar-smach-ros
+Description: flexbe_testing provides a framework for unit testing states.
