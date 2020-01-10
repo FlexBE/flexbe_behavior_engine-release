@@ -1,3 +1,35 @@
+## flexbe (melodic) - 1.2.3-1
+
+The packages in the `flexbe` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --track melodic flexbe` on `Fri, 10 Jan 2020 15:01:18 -0000`
+
+These packages were released:
+- `flexbe_behavior_engine`
+- `flexbe_core`
+- `flexbe_input`
+- `flexbe_mirror`
+- `flexbe_msgs`
+- `flexbe_onboard`
+- `flexbe_states`
+- `flexbe_testing`
+- `flexbe_widget`
+
+Version of package(s) in repository `flexbe`:
+
+- upstream repository: https://github.com/team-vigir/flexbe_behavior_engine.git
+- release repository: https://github.com/FlexBE/flexbe_behavior_engine-release.git
+- rosdistro version: `1.2.2-1`
+- old version: `1.2.2-1`
+- new version: `1.2.3-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.0`
+- catkin_pkg version: `0.4.15`
+- rosdep version: `0.18.0`
+- rosdistro version: `0.8.0`
+- vcstools version: `0.1.42`
+
+
 ## flexbe (melodic) - 1.2.2-1
 
 The packages in the `flexbe` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --track melodic flexbe` on `Mon, 16 Sep 2019 18:11:17 -0000`
