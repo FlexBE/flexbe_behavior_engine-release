@@ -1,0 +1,12 @@
+Source: ros-melodic-flexbe-onboard
+Section: misc
+Priority: optional
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://ros.org/wiki/flexbe_onboard
+Standards-Version: 3.9.2
+
+Package: ros-melodic-flexbe-onboard
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-flexbe-core, ros-melodic-flexbe-msgs, ros-melodic-rospy, ros-melodic-smach-ros
+Description: flexbe_onboard implements the robot-side of the behavior engine from where all behaviors are started.
