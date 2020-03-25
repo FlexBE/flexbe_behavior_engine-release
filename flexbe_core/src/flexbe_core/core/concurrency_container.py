@@ -45,11 +45,11 @@ class ConcurrencyContainer(EventState, OperatableStateMachine):
         #self._state_transitioning_lock.release()
         sleep_dur = None
         for state in self._ordered_states:
-            if state.name in self._returned_outcomes.keys() and self._returned_outcomes[state.name] != self._loopback_name:
+            if state.name in list(self._returned_outcomes.keys()) and self._returned_outcomes[state.name] != self._loopback_name:
                 continue
-            if PriorityContainer.active_container is not None \
-            and not PriorityContainer.active_container.startswith(state._get_path()) \
-            and not state._get_path().startswith(PriorityContainer.active_container):
+            if (PriorityContainer.active_container is not None
+                and not all(a == s for a, s in zip(PriorityContainer.active_container.split('/'),
+                                                   state._get_path().split('/')))):
                 if isinstance(state, EventState):
                     state._notify_skipped()
                 elif state._get_deep_state() is not None:
@@ -59,9 +59,11 @@ class ConcurrencyContainer(EventState, OperatableStateMachine):
             if state_sleep_dur <= 0:
                 sleep_dur = 0
                 self._returned_outcomes[state.name] = self._execute_state(state)
-                # this sleep returns immediately since sleep duration is negative,
-                # but is required here to reset the sleep time after executing
-                state._rate.sleep()
+                # check again in case the sleep has already been handled by the child
+                if state._rate.remaining().to_sec() < 0:
+                    # this sleep returns immediately since sleep duration is negative,
+                    # but is required here to reset the sleep time after executing
+                    state._rate.sleep()
             else:
                 if sleep_dur is None:
                     sleep_dur = state_sleep_dur
@@ -75,7 +77,7 @@ class ConcurrencyContainer(EventState, OperatableStateMachine):
         outcome = self._loopback_name
         for item in self._conditions:
             (oc, cond) = item
-            if all(self._returned_outcomes.has_key(sn) and self._returned_outcomes[sn] == o for sn,o in cond):
+            if all(sn in self._returned_outcomes and self._returned_outcomes[sn] == o for sn,o in cond):
                 outcome = oc
                 break
 
@@ -86,7 +88,7 @@ class ConcurrencyContainer(EventState, OperatableStateMachine):
         if outcome in self.get_registered_outcomes():
             # Call termination callbacks
             self.call_termination_cbs([s.name for s in self._ordered_states],outcome)
-            self.on_exit(self.userdata, states = filter(lambda s: s.name not in self._returned_outcomes.keys() or self._returned_outcomes[s.name] == self._loopback_name, self._ordered_states))
+            self.on_exit(self.userdata, states = [s for s in self._ordered_states if s.name not in list(self._returned_outcomes.keys()) or self._returned_outcomes[s.name] == self._loopback_name])
             self._returned_outcomes = dict()
             # right now, going out of a cc may break sync
             # thus, as a quick fix, explicitly sync again
