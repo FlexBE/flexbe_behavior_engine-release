@@ -220,6 +220,7 @@ class OperatableStateMachine(PreemptableStateMachine):
         self._sub.subscribe('flexbe/request_mirror_structure', Int32, self._mirror_structure_callback)
 
         StateLogger.initialize(name)
+        StateLogger.log('flexbe.initialize', None, behavior=name, autonomy=OperatableStateMachine.autonomy_level)
         if OperatableStateMachine.autonomy_level != 255:
             self._enable_ros_control()
 
@@ -272,6 +273,8 @@ class OperatableStateMachine(PreemptableStateMachine):
         msg.behavior_id = self.id
         self._pub.publish('flexbe/mirror/structure', msg)
         rospy.loginfo("<-- Sent behavior structure for mirror.")
+        # enable control of states since a mirror is listening
+        self._enable_ros_control()
 
 
     def _transition_allowed(self, label, outcome):
