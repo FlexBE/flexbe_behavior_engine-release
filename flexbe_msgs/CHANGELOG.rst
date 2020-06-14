@@ -2,6 +2,12 @@
 Changelog for package flexbe_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.5 (2020-06-14)
+------------------
+* Merge branch 'develop' into feature/state_logger_rework
+* [flexbe_msgs] Remove deprecated constants from input action
+* Contributors: Philipp Schillinger
+
 1.2.4 (2020-03-25)
 ------------------
 * [flexbe_msgs] [flexbe_core] Add debug level to logger
