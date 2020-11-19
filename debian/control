@@ -1,0 +1,12 @@
+Source: ros-kinetic-flexbe-core
+Section: misc
+Priority: optional
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin, ros-kinetic-rostest
+Homepage: http://ros.org/wiki/flexbe_core
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-flexbe-core
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-diagnostic-msgs, ros-kinetic-flexbe-msgs, ros-kinetic-rospy, ros-kinetic-tf
+Description: flexbe_core provides the core components for the FlexBE behavior engine.
