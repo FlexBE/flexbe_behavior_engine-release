@@ -1,0 +1,12 @@
+Source: ros-kinetic-flexbe-widget
+Section: misc
+Priority: optional
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-catkin
+Homepage: http://ros.org/wiki/flexbe_widget
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-flexbe-widget
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-flexbe-core, ros-kinetic-flexbe-mirror, ros-kinetic-flexbe-msgs, ros-kinetic-flexbe-onboard, ros-kinetic-rospy
+Description: flexbe_widget implements some smaller scripts for the behavior engine.
