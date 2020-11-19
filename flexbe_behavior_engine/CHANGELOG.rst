@@ -2,6 +2,9 @@
 Changelog for package flexbe_behavior_engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.0 (2020-11-19)
+------------------
+
 1.2.5 (2020-06-14)
 ------------------
 * Merge branch 'develop' into feature/state_logger_rework
