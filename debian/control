@@ -1,0 +1,12 @@
+Source: ros-melodic-flexbe-mirror
+Section: misc
+Priority: optional
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://ros.org/wiki/flexbe_mirror
+Standards-Version: 3.9.2
+
+Package: ros-melodic-flexbe-mirror
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-flexbe-core, ros-melodic-flexbe-msgs, ros-melodic-rospy
+Description: flexbe_mirror implements functionality to remotely mirror an executed behavior.
