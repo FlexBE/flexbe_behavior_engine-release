@@ -6,7 +6,6 @@ import inspect
 import tempfile
 import threading
 import time
-import smach
 import zlib
 import contextlib
 from ast import literal_eval as cast
@@ -27,9 +26,6 @@ class FlexbeOnboard(object):
         self.be = None
         Logger.initialize()
         self._tracked_imports = list()
-        # hide SMACH transition log spamming
-        smach.set_loggers(rospy.logdebug, rospy.logwarn, rospy.logdebug, rospy.logerr)
-
         # prepare temp folder
         self._tmp_folder = tempfile.mkdtemp()
         sys.path.append(self._tmp_folder)
@@ -116,7 +112,7 @@ class FlexbeOnboard(object):
                         return
                     # stop the rest
                     rospy.loginfo('Preempting current behavior version...')
-                    self.be.preempt_for_switch()
+                    self.be.preempt()
 
         # execute the behavior
         with self._run_lock:
@@ -148,8 +144,9 @@ class FlexbeOnboard(object):
 
             # done, remove left-overs like the temporary behavior file
             try:
-                if not self._switching:
-                    self._clear_imports()
+                # hotfix: do not clear imports for now, not working correctly (e.g., flexbe/flexbe_app#66)
+                # if not self._switching:
+                #     self._clear_imports()
                 self._cleanup_behavior(msg.behavior_checksum)
             except Exception as e:
                 rospy.logerr('Failed to clean up behavior:\n%s' % str(e))
@@ -194,7 +191,7 @@ class FlexbeOnboard(object):
                 file_content += be_content[last_index:mod.index_begin] + mod.new_content
                 last_index = mod.index_end
             file_content += be_content[last_index:]
-            if zlib.adler32(file_content) != msg.behavior_checksum:
+            if zlib.adler32(file_content.encode()) & 0x7fffffff != msg.behavior_checksum:
                 mismatch_msg = ("Checksum mismatch of behavior versions! \n"
                                 "Attempted to load behavior: %s\n"
                                 "Make sure that all computers are on the same version a.\n"
