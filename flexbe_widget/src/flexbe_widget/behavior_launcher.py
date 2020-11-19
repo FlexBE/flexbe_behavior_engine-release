@@ -38,7 +38,7 @@ class BehaviorLauncher(object):
 		rospy.loginfo("%d behaviors available, ready for start request." % self._behavior_lib.count_behaviors())
 
 	def _status_callback(self, msg):
-		if msg.code == BEStatus.READY:
+		if msg.code in [BEStatus.READY, BEStatus.FINISHED, BEStatus.FAILED, BEStatus.ERROR]:
 			self._ready_event.set()
 
 	def _callback(self, msg):
@@ -64,7 +64,7 @@ class BehaviorLauncher(object):
 					else:
 						yamlpath = os.path.join(self._rp.get_path(path.split('/')[0]), '/'.join(path.split('/')[1:]))
 					with open(yamlpath, 'r') as f:
-						content = yaml.load(f)
+						content = getattr(yaml, 'full_load', yaml.load)(f)
 					if ns != '' and ns in content:
 						content = content[ns]
 					be_selection.arg_keys.append(key)
@@ -95,7 +95,7 @@ class BehaviorLauncher(object):
 
 		be_filepath_old = self._behavior_lib.get_sourcecode_filepath(be_id, add_tmp=True)
 		if not os.path.isfile(be_filepath_old):
-			be_selection.behavior_checksum = zlib.adler32(be_content_new)
+			be_selection.behavior_checksum = zlib.adler32(be_content_new.encode()) & 0x7fffffff
 			if msg.autonomy_level != 255:
 				be_structure.behavior_id = be_selection.behavior_checksum
 				self._mirror_pub.publish(be_structure)
@@ -112,7 +112,7 @@ class BehaviorLauncher(object):
 			content = be_content_new[b0:b1]
 			be_selection.modifications.append(BehaviorModification(a0, a1, content))
 
-		be_selection.behavior_checksum = zlib.adler32(be_content_new)
+		be_selection.behavior_checksum = zlib.adler32(be_content_new.encode()) & 0x7fffffff
 		if msg.autonomy_level != 255:
 			be_structure.behavior_id = be_selection.behavior_checksum
 			self._mirror_pub.publish(be_structure)
