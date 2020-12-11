@@ -2,6 +2,9 @@
 Changelog for package flexbe_widget
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.1 (2020-12-11)
+------------------
+
 1.3.0 (2020-11-19)
 ------------------
 * [flexbe_core] [flexbe_widget] Correctly handle non-existing behaviors in action goals
