@@ -1,0 +1,13 @@
+Source: ros-noetic-flexbe-states
+Section: misc
+Priority: optional
+Maintainer: Philipp Schillinger <schillin@kth.se>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-geometry-msgs, ros-noetic-rostest
+Homepage: http://ros.org/wiki/flexbe_states
+Standards-Version: 3.9.2
+
+Package: ros-noetic-flexbe-states
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-flexbe-core, ros-noetic-flexbe-msgs, ros-noetic-flexbe-testing, ros-noetic-rosbag, ros-noetic-rospy
+Description: flexbe_states provides a collection of predefined states.
+ Feel free to add new states.
