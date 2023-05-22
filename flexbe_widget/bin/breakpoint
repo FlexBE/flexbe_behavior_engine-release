@@ -1,0 +1,14 @@
+#!/bin/bash
+if "true" : '''\'
+then
+python${ROS_PYTHON_VERSION:-} "${BASH_SOURCE[0]}" $*
+exit
+fi
+'''
+# flake8: noqa
+import rospy
+import sys
+
+
+if __name__ == '__main__':
+    rospy.set_param('/flexbe/breakpoints', sys.argv[1:])
