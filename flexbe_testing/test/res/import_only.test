@@ -1,4 +1,0 @@
-path: flexbe_testing.test.import_only_state
-class: ImportOnlyState
-
-import_only: true
