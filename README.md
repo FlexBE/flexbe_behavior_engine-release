@@ -1,3 +1,9 @@
+## This repo is Archived in preparation for ROS 2 releases
+
+New work is at https://github.com/ros2-gbp/flexbe_behavior_engine-release
+
+
+
 ## flexbe (noetic) - 1.4.0-2
 
 The packages in the `flexbe` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --rosdistro noetic --track noetic flexbe --edit` on `Mon, 22 May 2023 16:06:51 -0000`
